@@ -2,7 +2,7 @@ package net.absoft.data;
 
 public enum Customer {
     FIRST_USER_INFO("Ivanov", "Ivan", "65000"),
-    SECOND_USER_INFO("Sidorov", "Semen", "31200" );
+    SECOND_USER_INFO("123", "123", "31200" );
 
     public String getFirstName() {
         return firstName;

@@ -2,7 +2,9 @@ package net.absoft;
 
 
 import net.absoft.data.Account;
+import net.absoft.data.Customer;
 import net.absoft.pages.CartPage;
+import net.absoft.pages.CheckoutPage;
 import net.absoft.pages.InventoryPage;
 import net.absoft.pages.LoginPage;
 import org.testng.annotations.BeforeMethod;
@@ -15,21 +17,24 @@ public class CartTest extends BaseTest{
     private final String ITEM2 = "Sauce Labs Fleece Jacket";
     private final String ITEM3 = "Sauce Labs Bolt T-Shirt";
     private InventoryPage inventoryPage;
-    private CartPage cartPage = new CartPage(driver);
+    private CheckoutPage checkout;
+    private CartPage cartPage ;
     @BeforeMethod
     public void setUp(){
          new LoginPage(driver)
                 .login(Account.STANDARD_USER)
                 .shouldSeePrimaryHeader();
          inventoryPage = new InventoryPage(driver);
+         checkout = new CheckoutPage(driver);
+         cartPage = new CartPage(driver);
     }
     @Test
     public void testAddingItemToCart() {
         inventoryPage
                 .addItemToCart(ITEM)
                 .openCart()
-                .checkItemPresence(ITEM);
-
+                .checkItemPresence(ITEM)
+                .continueShoppingButton.click();
     }
     @Test
     public void testRemovedItemOnInventoryPage() {
@@ -40,7 +45,12 @@ public class CartTest extends BaseTest{
                 .openCart()
                 .checkItemPresence(ITEM3)
                 .checkItemAbsent(ITEM2)
-                .continueShoppingButton.click();
+                .checkoutButton.click();
+          checkout.fillInfo(Customer.FIRST_USER_INFO)
+                .checkOutItemPresence(ITEM3)
+                .checkOutItemAbsent(ITEM2);
+
+
     }
     @Test
     public void testRemovedItemOnCartPage() {
@@ -52,6 +62,9 @@ public class CartTest extends BaseTest{
                 .checkItemPresence(ITEM)
                 .checkItemAbsent(ITEM2)
                 .checkoutButton.click();
+      checkout.fillInfo(Customer.FIRST_USER_INFO)
+             .checkOutItemPresence(ITEM)
+              .checkOutItemAbsent(ITEM2);
 
     }
 }

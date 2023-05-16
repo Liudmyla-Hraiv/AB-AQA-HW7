@@ -20,7 +20,7 @@ public class LoginPage extends BaseComponent {
     public LoginPage(WebDriver driver) {
         super(driver);
     }
-    @Step("Perform login as {account.login} with password as {account.password}")
+   // @Step("Perform login as {account.login} with password as {account.password}")
     public InventoryPage login(Account account){
         usernameInput.sendKeys(account.getLogin());
         passwordInput.sendKeys(account.getPassword());

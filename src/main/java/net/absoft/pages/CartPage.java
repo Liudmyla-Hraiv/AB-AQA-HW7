@@ -21,14 +21,14 @@ public class CartPage extends BaseStorePage {
       String itemXPathFormatted = String.format(itemXPath, itemName);
       assertTrue(!driver.findElements(By.xpath(itemXPathFormatted)).isEmpty()
                       && driver.findElement(By.xpath(itemXPathFormatted)).isDisplayed(),
-              "Item " + itemName + " was not added to cart");
+              "Item " + itemName + " was not added to Cart Page");
       return this;
   }
   public CartPage checkItemAbsent(String itemName){
       String itemXPathFormatted = String.format(itemXPath, itemName);
       assertFalse(!driver.findElements(By.xpath(itemXPathFormatted)).isEmpty()
                       && driver.findElement(By.xpath(itemXPathFormatted)).isDisplayed(),
-              "Item " + itemName + " was not removed");
+              "Item " + itemName + " was not removed from Cart Page");
       return this;
   }
     public CartPage removeItemFromCart(String itemName){

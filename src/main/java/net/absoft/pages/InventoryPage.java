@@ -11,7 +11,7 @@ public class InventoryPage extends BaseStorePage {
     public InventoryPage(WebDriver driver) {
         super(driver);
     }
-   @Step("Adding item {itemName} to cart")
+   //@Step("Adding item {itemName} to cart")
     public InventoryPage addItemToCart(String itemName){
        WebElement item = driver.findElement(By.xpath(String.format(itemXPath2, itemName)));
        WebElement addToCartButton = item.findElement(By.xpath(".//button[contains(@data-test, 'add-to-cart')]"));

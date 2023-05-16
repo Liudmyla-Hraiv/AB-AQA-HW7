@@ -18,12 +18,12 @@ public class LoginTest extends BaseTest{
         new InventoryPage(driver).shouldSeePrimaryHeader();
 
     }
-    Account lockAccount = Account.LOCKED_USER;
-    @Test (description = "Test lock out user Login")
+    Account problemUser = Account.PROBLEM_USER;
+    @Test (description = "Test Problem user Login")
     public void testLockOutUserLogin() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.usernameInput.sendKeys(lockAccount.getLogin());
-        loginPage.passwordInput.sendKeys(lockAccount.getPassword());
+        loginPage.usernameInput.sendKeys(problemUser.getLogin());
+        loginPage.passwordInput.sendKeys(problemUser.getPassword());
         loginPage.loginButton.click();
         new InventoryPage(driver).shouldSeePrimaryHeader();
     }

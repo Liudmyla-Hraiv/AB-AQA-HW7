@@ -2,8 +2,8 @@ package net.absoft.data;
 
 public enum Account {
     STANDARD_USER("standard_user", "secret_sauce"),
-    LOCKED_USER("locked_out_user", "secret_sauce"),
     PROBLEM_USER("problem_user", "secret_sauce");
+
 // Other accounts might be placed here
 
     public String login;
